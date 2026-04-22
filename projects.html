@@ -15,40 +15,67 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-gradient); min-height: 100vh; padding: 40px 20px; color: #1d1d1f; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-gradient); 
+            min-height: 100vh; 
+            padding: 40px 20px; 
+            color: #1d1d1f; 
+        }
 
         .container { max-width: 900px; margin: 0 auto; }
+        
         .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1d1d1f; }
+        .header p { color: #666; font-size: 1.1rem; }
+
+        .btn-back { 
+            display: inline-block; padding: 12px 25px; background: #1d1d1f; 
+            color: white; text-decoration: none; border-radius: 50px; 
+            font-weight: 600; margin-bottom: 30px; transition: var(--transition); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-back:hover { background: #333; transform: translateX(-5px); }
 
         .project-card {
             background: var(--glass-white);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 24px;
-            padding: 30px;
+            padding: 35px;
             margin-bottom: 30px;
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
         }
 
-        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
 
-        .project-title { font-size: 1.5rem; font-weight: 700; color: var(--primary-accent); display: flex; align-items: center; gap: 10px; }
-        .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-        .tech-tag { background: rgba(0, 102, 204, 0.1); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--primary-accent); }
+        .project-title { 
+            font-size: 1.6rem; font-weight: 700; color: var(--primary-accent); 
+            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+        }
+        
+        .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .tech-tag { 
+            background: rgba(0, 102, 204, 0.1); padding: 6px 14px; 
+            border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--primary-accent); 
+        }
 
-        .project-desc { font-size: 0.95rem; line-height: 1.6; color: #444; }
-        .project-features { list-style: none; margin-top: 10px; }
-        .project-features li { font-size: 0.9rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
-        .project-features li::before { content: "✔"; color: #28a745; font-weight: bold; }
+        .project-desc { font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 20px; }
 
-        .btn-back { display: inline-block; padding: 12px 25px; background: #1d1d1f; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; margin-bottom: 20px; transition: var(--transition); }
-        .btn-back:hover { background: #333; transform: translateX(-5px); }
+        .feature-title { font-weight: 700; margin-bottom: 10px; display: block; font-size: 1.1rem; }
+        .project-features { list-style: none; padding-left: 5px; }
+        .project-features li { 
+            font-size: 0.95rem; margin-bottom: 8px; display: flex; 
+            align-items: flex-start; gap: 10px; color: #444; 
+        }
+        .project-features li i { color: #28a745; margin-top: 4px; font-size: 0.9rem; }
 
-        .github-link { align-self: flex-start; margin-top: 15px; padding: 10px 20px; background: var(--primary-accent); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .project-card { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -57,33 +84,36 @@
     <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
     
     <div class="header">
-        <h1>My Technical Projects</h1>
-        <p>A showcase of my software development journey as a CSE student.</p>
+        <h1>Technical Projects</h1>
+        <p>Software development projects and academic works.</p>
     </div>
 
     <div class="project-card">
-        <div class="project-title"><i class="fas fa-seedling"></i> Flower Shop Management System</div>
+        <div class="project-title"><i class="fas fa-shopping-basket"></i> Flower Shop Management System</div>
+        
         <div class="tech-stack">
             <span class="tech-tag">Java</span>
-            <span class="tech-tag">JavaFX (GUI)</span>
+            <span class="tech-tag">JavaFX</span>
             <span class="tech-tag">OOP</span>
             <span class="tech-tag">File Handling</span>
         </div>
+
         <p class="project-desc">
-            A comprehensive desktop application designed to manage a flower boutique. It features separate dashboards for Admin and Customers with secure login and data persistence.
+            An automated management system for a flower boutique, featuring a dual-layer access system for Administrators and Customers. The project focuses on structured data management and user-friendly GUI.
         </p>
+
+        <span class="feature-title">Core Implementation:</span>
         <ul class="project-features">
-            <li><strong>Admin Role:</strong> Manage inventory (Add/Update/Delete flowers) and view/cancel orders.</li>
-            <li><strong>Customer Role:</strong> Browse available flowers, place orders, and track order history.</li>
-            <li><strong>Data Persistence:</strong> All information is saved and loaded from text files using Custom File Handlers.</li>
-            <li><strong>OOP Principles:</strong> Implemented Inheritance (User -> Admin/Customer) and Encapsulation.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Management System:</strong> Admins can manage inventory and track all customer orders in real-time.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Interactive UI:</strong> Developed using JavaFX with dedicated screens for Login, Registration, and Dashboards.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Data Persistence:</strong> Implemented a robust File Handling system to save and retrieve all store data.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Software Architecture:</strong> Built on Object-Oriented Programming (OOP) principles like Inheritance and Encapsulation.</li>
         </ul>
-        <a href="#" class="github-link"><i class="fab fa-github"></i> View Source Code</a>
     </div>
 
-    <div class="project-card" style="opacity: 0.7;">
-        <div class="project-title"><i class="fas fa-code"></i> Upcoming Project...</div>
-        <p class="project-desc">Working on a new SQL based database project or Assembly task. Stay tuned!</p>
+    <div class="project-card" style="opacity: 0.6; border-style: dashed;">
+        <div class="project-title"><i class="fas fa-code-branch"></i> Upcoming Project</div>
+        <p class="project-desc">New project in development. Focused on SQL Database Management and Assembly Language implementation.</p>
     </div>
 </div>
 
