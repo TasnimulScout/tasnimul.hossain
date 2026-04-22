@@ -3,119 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasnimul's Projects | CSE Portfolio</title>
+    <title>Technical Projects | Tasnimul Hossain</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-accent: #0066cc;
-            --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-            --glass-white: rgba(255, 255, 255, 0.7);
-            --transition: all 0.3s ease;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg-gradient); 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh; 
-            padding: 40px 20px; 
-            color: #1d1d1f; 
+            padding: 60px 20px; 
+            color: #f8fafc;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 900px; margin: 0 auto; }
+        /* কার্সার ক্যানভাস */
+        #cursor-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
         
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1d1d1f; }
-        .header p { color: #666; font-size: 1.1rem; }
+        .header { text-align: center; margin-bottom: 60px; }
+        .header h1 { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .header p { color: #94a3b8; font-size: 1.1rem; letter-spacing: 1px; }
 
         .btn-back { 
-            display: inline-block; padding: 12px 25px; background: #1d1d1f; 
-            color: white; text-decoration: none; border-radius: 50px; 
-            font-weight: 600; margin-bottom: 30px; transition: var(--transition); 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: inline-flex; 
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px; 
+            background: rgba(255, 255, 255, 0.1);
+            color: white; 
+            text-decoration: none; 
+            border-radius: 15px; 
+            font-weight: 600; 
+            margin-bottom: 40px; 
+            transition: var(--transition); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
-        .btn-back:hover { background: #333; transform: translateX(-5px); }
+        .btn-back:hover { 
+            background: var(--primary-accent); 
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(0, 102, 204, 0.4);
+        }
 
+        /* প্রজেক্ট কার্ড ডিজাইন */
         .project-card {
-            background: var(--glass-white);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 24px;
-            padding: 35px;
-            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+        }
+
+        .project-card:hover { 
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
 
         .project-title { 
-            font-size: 1.6rem; font-weight: 700; color: var(--primary-accent); 
-            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+            font-size: 1.8rem; font-weight: 700; color: #fff; 
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
         }
+        .project-title i { color: #38bdf8; font-size: 2rem; }
         
-        .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .tech-stack { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 25px; }
         .tech-tag { 
-            background: rgba(0, 102, 204, 0.1); padding: 6px 14px; 
-            border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--primary-accent); 
+            background: rgba(56, 189, 248, 0.15); 
+            padding: 8px 18px; 
+            border-radius: 50px; 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
-        .project-desc { font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 20px; }
+        .project-desc { 
+            font-size: 1.05rem; 
+            line-height: 1.8; 
+            color: #cbd5e1; 
+            margin-bottom: 25px; 
+        }
 
-        .feature-title { font-weight: 700; margin-bottom: 10px; display: block; font-size: 1.1rem; }
-        .project-features { list-style: none; padding-left: 5px; }
+        .feature-title { 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            display: block; 
+            font-size: 1.2rem; 
+            color: #f1f5f9;
+        }
+        .project-features { list-style: none; }
         .project-features li { 
-            font-size: 0.95rem; margin-bottom: 8px; display: flex; 
-            align-items: flex-start; gap: 10px; color: #444; 
+            font-size: 1rem; margin-bottom: 12px; display: flex; 
+            align-items: center; gap: 12px; color: #94a3b8; 
         }
-        .project-features li i { color: #28a745; margin-top: 4px; font-size: 0.9rem; }
+        .project-features li i { color: #22c55e; font-size: 1.1rem; }
 
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            .header h1 { font-size: 2rem; }
-            .project-card { padding: 20px; }
+        /* আপকামিং প্রজেক্ট স্টাইল */
+        .upcoming {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            background: transparent;
+            text-align: center;
+        }
+
+        /* মোবাইল স্ক্রিন */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .project-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
-    
-    <div class="header">
-        <h1>Technical Projects</h1>
-        <p>Software development projects and academic works.</p>
-    </div>
+    <canvas id="cursor-canvas"></canvas>
 
-    <div class="project-card">
-        <div class="project-title"><i class="fas fa-shopping-basket"></i> Flower Shop Management System</div>
+    <div class="container">
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
         
-        <div class="tech-stack">
-            <span class="tech-tag">Java</span>
-            <span class="tech-tag">JavaFX</span>
-            <span class="tech-tag">OOP</span>
-            <span class="tech-tag">File Handling</span>
+        <div class="header">
+            <h1>Technical Projects</h1>
+            <p>Showcasing my journey as a CSE student</p>
         </div>
 
-        <p class="project-desc">
-            An automated management system for a flower boutique, featuring a dual-layer access system for Administrators and Customers. The project focuses on structured data management and user-friendly GUI.
-        </p>
+        <div class="project-card">
+            <div class="project-title"><i class="fas fa-seedling"></i> Flower Shop Management System</div>
+            
+            <div class="tech-stack">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaFX</span>
+                <span class="tech-tag">OOP</span>
+                <span class="tech-tag">File Handling</span>
+            </div>
 
-        <span class="feature-title">Core Implementation:</span>
-        <ul class="project-features">
-            <li><i class="fas fa-check-circle"></i> <strong>Management System:</strong> Admins can manage inventory and track all customer orders in real-time.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Interactive UI:</strong> Developed using JavaFX with dedicated screens for Login, Registration, and Dashboards.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Data Persistence:</strong> Implemented a robust File Handling system to save and retrieve all store data.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Software Architecture:</strong> Built on Object-Oriented Programming (OOP) principles like Inheritance and Encapsulation.</li>
-        </ul>
+            <p class="project-desc">
+                An advanced automated management system for a flower boutique. This project implements a secure dual-access architecture where Administrators control the logistics and Customers enjoy a seamless shopping experience.
+            </p>
+
+            <span class="feature-title">Technical Highlights:</span>
+            <ul class="project-features">
+                <li><i class="fas fa-check-circle"></i> <strong>Admin Dashboard:</strong> Real-time inventory management and order monitoring.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>User Experience:</strong> GUI-driven registration and order placement system.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Persistence:</strong> Custom File Handler for data storage (No DB required).</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Architecture:</strong> Heavy use of Inheritance, Encapsulation, and Polymorphism.</li>
+            </ul>
+        </div>
+
+        <div class="project-card upcoming">
+            <div class="project-title" style="justify-content: center;"><i class="fas fa-terminal"></i> In Progress...</div>
+            <p class="project-desc">
+                Developing an <strong>SQL-based Database Management System</strong> and working on low-level <strong>x86 Assembly</strong> pattern algorithms.
+            </p>
+            <div class="tech-stack" style="justify-content: center;">
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Assembly</span>
+                <span class="tech-tag">C++</span>
+            </div>
+        </div>
     </div>
 
-    <div class="project-card" style="opacity: 0.6; border-style: dashed;">
-        <div class="project-title"><i class="fas fa-code-branch"></i> Upcoming Project</div>
-        <p class="project-desc">New project in development. Focused on SQL Database Management and Assembly Language implementation.</p>
-    </div>
-</div>
+    <script>
+        const canvas = document.getElementById('cursor-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 6 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                // এই থিমের জন্য আকাশী-নীল কণা (Sky Blue)
+                this.color = `rgba(56, 189, 248, ${Math.random() * 0.7})`; 
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.1) this.size -= 0.1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(e.clientX, e.clientY));
+            }
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].size <= 0.1) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
