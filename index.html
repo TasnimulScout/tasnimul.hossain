@@ -3,96 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasnimul Hossain | Interactive Portfolio</title>
+    <title>Tasnimul Hossain | Professional Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent-color: #00d2ff;
-            --bg-dark: #0f0c29;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #1d1d1f;
+            --accent: #0066cc;
+            --bg: #ffffff;
+            --text-secondary: #6e6e73;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
             line-height: 1.6;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 850px; margin: 0 auto; padding: 60px 20px; }
 
-        header { text-align: center; margin-bottom: 60px; }
+        header { text-align: center; margin-bottom: 70px; }
 
         .profile-img {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            width: 150px; height: 150px; border-radius: 50%;
             object-fit: cover; margin-bottom: 20px;
+            border: 1px solid #d2d2d7;
         }
 
-        h1 { font-size: 3rem; background: linear-gradient(to right, #00d2ff, #91eae4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .role-tag { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; display: block; }
+        h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; }
+        .role-tag { font-size: 1.1rem; color: var(--text-secondary); }
 
-        .glass-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 40px;
-        }
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 25px; border-bottom: 1px solid #d2d2d7; padding-bottom: 10px; color: var(--primary); }
 
-        h2 { font-size: 2rem; color: var(--accent-color); margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
-
-        .timeline-item {
-            position: relative; border-left: 2px solid var(--accent-color);
-            padding-left: 30px; padding-bottom: 25px;
-        }
-
-        .timeline-item::before {
-            content: ''; position: absolute; left: -10px; top: 0;
-            width: 18px; height: 18px; background: var(--accent-color);
-            border-radius: 50%; box-shadow: 0 0 10px var(--accent-color);
-        }
-
-        .date { font-weight: 700; color: var(--accent-color); font-size: 0.9rem; text-transform: uppercase; }
-        .title { font-size: 1.4rem; font-weight: 600; margin: 5px 0; color: #fff; }
-        .org { font-style: italic; color: #91eae4; margin-bottom: 10px; display: block; }
-        .desc { font-size: 0.95rem; opacity: 0.75; text-align: justify; }
+        .item { margin-bottom: 30px; }
+        .date { font-size: 0.85rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .title { font-size: 1.3rem; font-weight: 600; color: var(--primary); }
+        .org { font-size: 1rem; color: var(--text-secondary); margin-bottom: 8px; display: block; font-weight: 500; }
+        .desc { font-size: 0.95rem; color: #444; text-align: justify; margin-top: 5px; }
 
         /* See More Logic */
-        #extra-experience {
-            display: none; /* Initially hidden */
+        #extra-experience { display: none; }
+        .btn-more {
+            background: none; border: 1.5px solid var(--accent);
+            color: var(--accent); padding: 10px 25px; border-radius: 30px;
+            cursor: pointer; font-size: 0.9rem; font-weight: 600;
+            transition: 0.3s; margin-top: 10px;
         }
+        .btn-more:hover { background: var(--accent); color: #fff; }
 
-        .btn-see-more {
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 10px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-
-        .btn-see-more:hover {
-            background: var(--accent-color);
-            color: #fff;
-        }
-
-        .btn-connect {
+        .btn-footer {
             display: inline-block; padding: 15px 40px;
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-            color: white; text-decoration: none; border-radius: 50px;
-            font-weight: bold; margin-top: 40px; transition: 0.3s;
+            background: var(--primary); color: #fff;
+            text-decoration: none; border-radius: 30px;
+            font-weight: 600; margin-top: 50px; transition: 0.3s;
         }
+        .btn-footer:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        ul.clubs { list-style: none; padding: 0; }
+        ul.clubs li { margin-bottom: 8px; font-size: 1rem; color: #444; display: flex; align-items: center; gap: 10px; }
+        ul.clubs li i { color: var(--accent); font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -101,104 +74,124 @@
     <header>
         <img src="My.jpeg" alt="Tasnimul Hossain" class="profile-img">
         <h1>Tasnimul Hossain</h1>
-        <span class="role-tag">Senior Rover Mate | Former Deputy Coordinator | CSE Student</span>
+        <p class="role-tag">Senior Rover Mate | Former Deputy Coordinator | CSE Professional</p>
     </header>
 
-    <div class="glass-section">
-        <h2><i class="fas fa-briefcase"></i> Experience Timeline</h2>
+    <section>
+        <h2>About Me</h2>
+        <p class="desc">
+            I am a dedicated <strong>CSE Student</strong> at Southeast University (Class of 2023) and an active leader in <strong>World Scouting</strong> since 2011. Currently, I am serving as the <strong>Senior Rover Mate</strong> at Crystal Open Scouts. I am proud to be part of the <strong>1st Batch of MoP Ring Badge Holders</strong> in Bangladesh. My career is focused on leadership, PR management, and technical excellence in Graphics and IT.
+        </p>
+    </section>
+
+    <section>
+        <h2>Experience</h2>
         
-        <div id="experience-container">
-            <div class="timeline-item">
-                <span class="date">March 1, 2025 - Present</span>
-                <div class="title">Senior Rover Mate</div>
-                <span class="org">Crystal Open Scouts, Dhaka</span>
-                <p class="desc">Leading a group of young minds dedicated to peace and assertiveness. Focused on community development and self-reliance.</p>
+        <div class="item">
+            <span class="date">March 1, 2025 - Present</span>
+            <div class="title">Senior Rover Mate</div>
+            <span class="org">Crystal Open Scouts, Dhaka</span>
+            <p class="desc">Leading organizational development and community scouting. Focusing on personal, health, and intellectual growth of stakeholders.</p>
+        </div>
+
+        <div class="item">
+            <span class="date">Jan 1, 2024 - July 4, 2024</span>
+            <div class="title">Deputy Coordinator</div>
+            <span class="org">PR & Marketing National Taskforce, Bangladesh Scouts</span>
+            <p class="desc">Managed national-level communication strategies and public relations for the organization.</p>
+        </div>
+
+        <div class="item">
+            <span class="date">Sept 19, 2020 - Present</span>
+            <div class="title">Messenger of Peace (MoP) Ring Badge Holder</div>
+            <span class="org">WOSM | 1st Batch in Bangladesh</span>
+            <p class="desc">Awarded for commitment to peace projects. This was the first time this Ring Badge was awarded in Bangladesh history.</p>
+        </div>
+
+        <div id="extra-experience">
+            <div class="item">
+                <span class="date">March 1, 2024 - Jan 21, 2026</span>
+                <div class="title">IT Secretary (Graphics) & Head of Graphics</div>
+                <span class="org">Southeast Cultural Society</span>
             </div>
 
-            <div class="timeline-item">
-                <span class="date">Jan 1, 2024 - July 4, 2024</span>
-                <div class="title">Deputy Coordinator</div>
+            <div class="item">
+                <span class="date">May 1, 2022 - Feb 28, 2025</span>
+                <div class="title">Rover Mate</div>
+                <span class="org">Crystal Open Scouts</span>
+            </div>
+
+            <div class="item">
+                <span class="date">April 14, 2021 - Dec 31, 2023</span>
+                <div class="title">Assistant Coordinator</div>
                 <span class="org">PR & Marketing National Taskforce, Bangladesh Scouts</span>
             </div>
 
-            <div class="timeline-item">
-                <span class="date">Sept 19, 2020 - Present</span>
-                <div class="title">MoP Ring Badge Holder (1st Batch)</div>
-                <span class="org">WOSM | Messenger of Peace Global Network</span>
-                <p class="desc">Historic milestone—part of the first batch awarded this badge in Bangladesh.</p>
+            <div class="item">
+                <span class="date">July 19, 2016 - June 1, 2017</span>
+                <div class="title">Senior Patrol Leader (S.P.L)</div>
+                <span class="org">Govt. Laboratory High School Scout Group</span>
             </div>
 
-            <div id="extra-experience">
-                <div class="timeline-item">
-                    <span class="date">March 1, 2024 - Jan 21, 2026</span>
-                    <div class="title">IT Secretary (Graphics) & Head of Graphics</div>
-                    <span class="org">Southeast Cultural Society</span>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="date">May 1, 2022 - Feb 28, 2025</span>
-                    <div class="title">Rover Mate</div>
-                    <span class="org">Crystal Open Scouts</span>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="date">April 14, 2021 - Dec 31, 2023</span>
-                    <div class="title">Assistant Coordinator</div>
-                    <span class="org">PR & Marketing National Taskforce, Bangladesh Scouts</span>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="date">July 19, 2016 - June 1, 2017</span>
-                    <div class="title">Senior Patrol Leader (S.P.L)</div>
-                    <span class="org">Govt. Laboratory High School Scout Group</span>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="date">2011 - 2018</span>
-                    <div class="title">Cub Scout & Boy Scout Journey</div>
-                    <span class="org">World Scouting (2011-2018)</span>
-                </div>
+            <div class="item">
+                <span class="date">2011 - 2018</span>
+                <div class="title">Cub & Boy Scout Journey</div>
+                <span class="org">World Scouting (From 2011-2018)</span>
             </div>
         </div>
 
-        <button class="btn-see-more" id="toggleBtn" onclick="toggleExperience()">See More Experiences</button>
-    </div>
+        <button class="btn-more" id="toggleBtn" onclick="toggleExp()">See All Experience</button>
+    </section>
 
-    <div class="glass-section">
-        <h2><i class="fas fa-university"></i> Education</h2>
-        <div class="timeline-item">
+    <section>
+        <h2>Education</h2>
+        <div class="item">
             <span class="date">2023 - Present</span>
-            <div class="title">B.Sc. in CSE</div>
+            <div class="title">B.Sc. in Computer Science & Engineering</div>
             <span class="org">Southeast University</span>
         </div>
-        <div class="timeline-item">
+        <div class="item">
             <span class="date">Class of 2020</span>
-            <div class="title">HSC</div>
+            <div class="title">Higher Secondary Certificate</div>
             <span class="org">B.A.F Shaheen College Kurmitola</span>
         </div>
-        <div class="timeline-item">
+        <div class="item">
             <span class="date">Class of 2018</span>
-            <div class="title">SSC</div>
-            <span class="org">Government Laboratory High School</span>
+            <div class="title">Secondary School Certificate</div>
+            <span class="org">Government Laboratory High School (Govt. Lab)</span>
         </div>
-    </div>
+        <div class="item">
+            <span class="date">Pre-2016</span>
+            <div class="title">High School</div>
+            <span class="org">BCSIR School & College</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Clubs & Affiliations</h2>
+        <ul class="clubs">
+            <li><i class="fas fa-check"></i> BNCC Cadet (2016-18)</li>
+            <li><i class="fas fa-check"></i> Science Club of The Laboratorians</li>
+            <li><i class="fas fa-check"></i> English Club of The Laboratorians</li>
+            <li><i class="fas fa-check"></i> Media Team, Bangladesh Scouts</li>
+        </ul>
+    </section>
 
     <div style="text-align: center;">
-        <a href="info.html" class="btn-connect">Contact Information <i class="fas fa-arrow-right"></i></a>
+        <a href="info.html" class="btn-footer">Get My Links</a>
     </div>
 </div>
 
 <script>
-    function toggleExperience() {
-        var extraExp = document.getElementById("extra-experience");
-        var btnText = document.getElementById("toggleBtn");
-
-        if (extraExp.style.display === "none" || extraExp.style.display === "") {
-            extraExp.style.display = "block";
-            btnText.innerHTML = "Show Less";
+    function toggleExp() {
+        var extra = document.getElementById("extra-experience");
+        var btn = document.getElementById("toggleBtn");
+        if (extra.style.display === "none" || extra.style.display === "") {
+            extra.style.display = "block";
+            btn.innerHTML = "Show Less";
         } else {
-            extraExp.style.display = "none";
-            btnText.innerHTML = "See More Experiences";
+            extra.style.display = "none";
+            btn.innerHTML = "See All Experience";
         }
     }
 </script>
