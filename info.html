@@ -20,15 +20,27 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
+            max-width: 300px;
         }
-        h2 { color: #764ba2; }
-        p { color: #333; font-size: 1.1rem; }
+        /* Chhobi-ti ke shundor bhabe dekhate niche style deya hoyeche */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Chhobi-ti gol dekhabe */
+            object-fit: cover;
+            border: 4px solid #764ba2;
+            margin-bottom: 15px;
+        }
+        h2 { color: #764ba2; margin: 10px 0; }
+        p { color: #333; font-size: 1.1rem; margin: 5px 0; }
         a { color: #667eea; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="info-card">
+        <img src="My.jpg" alt="Tasnimul Hossain" class="profile-img">
+        
         <h2>আমার ইনফো</h2>
         <p><strong>নাম:</strong> Tasnimul Hossain</p>
         <p><strong>মোবাইল:</strong> +880 1827-621209</p>
