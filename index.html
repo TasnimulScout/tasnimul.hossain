@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasnimul Hossain | Interactive Dashboard</title>
+    <title>Tasnimul Hossain | Executive Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -27,16 +27,16 @@
             overflow-x: hidden;
         }
 
-        /* --- Cursor Canvas --- */
+        /* Interactive Cursor Canvas */
         #cursor-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            pointer-events: none; /* যাতে ক্লিকে সমস্যা না হয় */
+            pointer-events: none;
             z-index: 9999;
         }
 
-        /* --- Sidebar Left --- */
+        /* Sidebar Section */
         .sidebar {
             width: var(--sidebar-width);
             height: 100vh;
@@ -70,7 +70,7 @@
         .nav-item:hover { background: rgba(0, 102, 204, 0.1); color: var(--primary-accent); transform: translateX(5px); }
         .nav-item i { margin-right: 12px; width: 20px; text-align: center; }
 
-        /* --- Main Content --- */
+        /* Main Content */
         .main-content {
             margin-left: var(--sidebar-width);
             margin-right: var(--activity-width);
@@ -91,14 +91,15 @@
         h2 { font-size: 1.6rem; margin-bottom: 20px; color: var(--primary-accent); display: flex; align-items: center; gap: 10px; }
 
         .item { margin-bottom: 25px; padding: 15px; border-radius: 12px; transition: var(--transition); }
-        .item:hover { background: rgba(255, 255, 255, 0.6); padding-left: 20px; transform: scale(1.01); }
+        .item:hover { background: rgba(255, 255, 255, 0.6); padding-left: 20px; }
+        
         .org-title { font-size: 1.3rem; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; display: block; }
         .sub-item { margin-bottom: 15px; border-left: 2px solid var(--primary-accent); padding-left: 15px; }
         .date { font-size: 0.8rem; font-weight: 700; color: var(--primary-accent); text-transform: uppercase; }
         .role-title { font-size: 1.1rem; font-weight: 600; color: #333; margin: 3px 0; }
-        .desc { font-size: 0.9rem; color: #444; text-align: justify; line-height: 1.5; }
+        .desc { font-size: 0.95rem; color: #444; text-align: justify; line-height: 1.6; }
 
-        /* --- Activity Sidebar Right --- */
+        /* Activity Sidebar Right */
         .activity-sidebar {
             width: var(--activity-width);
             height: 100vh;
@@ -119,7 +120,7 @@
             transition: var(--transition);
         }
         .photo-card img { width: 100%; height: 180px; object-fit: cover; }
-        .photo-info { padding: 12px; font-size: 0.85rem; text-align: center; font-weight: 600; }
+        .photo-info { padding: 12px; font-size: 0.85rem; text-align: center; font-weight: 600; line-height: 1.3; }
 
         #extra-experience { display: none; }
         .btn-toggle { background: white; border: 1.5px solid var(--primary-accent); padding: 10px 25px; border-radius: 50px; font-weight: 600; cursor: pointer; color: var(--primary-accent); display: block; margin: 10px auto; transition: 0.3s; }
@@ -151,10 +152,14 @@
     </aside>
 
     <main class="main-content">
+        
         <section id="overview" class="section-card">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
             <p class="desc">
-                I am a dedicated <strong>CSE Student</strong> at Southeast University and a <strong>Senior Rover Mate</strong> at Crystal Open Scouts. Recognized as part of the <strong>1st Batch of MoP Ring Badge Holders</strong> in Bangladesh history. 
+                I am a dedicated <strong>Computer Science & Engineering (CSE) Student</strong> at Southeast University (Class of 2023) and an active, long-standing member of the <strong>World Scouting</strong> movement since 2011. Currently, I am serving as the <strong>Senior Rover Mate</strong> at Crystal Open Scouts, where I lead with a focus on personal, organizational, and community development.
+            </p>
+            <p class="desc" style="margin-top: 10px;">
+                I am immensely proud to be part of the <strong>very first batch in Bangladesh</strong> to receive the prestigious <strong>Messenger of Peace (MoP) Ring Badge</strong>. My journey has spanned across national levels, including serving as the <strong>Former Deputy Coordinator</strong> of the Public Relations & Marketing National Taskforce at Bangladesh Scouts. With a strong foundation in IT and Graphics Design, having served as <strong>IT Secretary</strong> at Southeast Cultural Society, I combine technical expertise with seasoned leadership to drive impactful results.
             </p>
         </section>
 
@@ -166,7 +171,7 @@
                 <div class="sub-item">
                     <span class="date">March 1, 2025 - Present</span>
                     <div class="role-title">Senior Rover Mate (SRM)</div>
-                    <p class="desc">Leading organizational development and community impact projects.</p>
+                    <p class="desc">Leading organizational development and community impact projects with a vision for self-reliant scouting.</p>
                 </div>
                 <div class="sub-item">
                     <span class="date">May 2022 - Feb 2025</span>
@@ -193,7 +198,7 @@
             <div class="item">
                 <span class="date">Sept 19, 2020 - Present</span>
                 <div class="role-title">MoP Ring Badge Holder (1st Batch)</div>
-                <span class="org">WOSM | Bangladesh Scouts</span>
+                <span class="org">World Organization of the Scout Movement (WOSM)</span>
             </div>
 
             <div id="extra-experience">
@@ -210,7 +215,7 @@
                 <div class="item">
                     <span class="date">2011 - 2018</span>
                     <div class="role-title">Cub & Boy Scout Journey</div>
-                    <span class="org">World Scouting Journey</span>
+                    <span class="org">World Scouting (Cub: 2011-12, Boy Scout: 2013-18)</span>
                 </div>
             </div>
             
@@ -244,13 +249,13 @@
 
     <aside class="activity-sidebar">
         <h3 style="color: var(--primary-accent); margin-bottom: 20px;"><i class="fas fa-camera-retro"></i> Activities</h3>
-        <div class="photo-card"><img src="activity1.jpg"><div class="photo-info">Scout Carnival</div></div>
-        <div class="photo-card"><img src="activity2.jpg"><div class="photo-info">JOTA-JOTI 2025</div></div>
-        <div class="photo-card"><img src="activity3.jpg"><div class="photo-info">Graphics Projects</div></div>
+        <div class="photo-card"><img src="a1.jpg"><div class="photo-info">Assisting in traffic control as a volunteer</div></div>
+        <div class="photo-card"><img src="activity1.jpg"><div class="photo-info">Rescue Operations and Relief Distribution</div></div>
+        <div class="photo-card"><img src="activity3.jpg"><div class="photo-info">52nd National Annual General Meeting of Bangladesh Scouts</div></div>
     </aside>
 
     <script>
-        // --- জলজলে কার্সার কোড ---
+        // Interactive Particles Code
         const canvas = document.getElementById('cursor-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -269,7 +274,7 @@
                 this.size = Math.random() * 5 + 1;
                 this.speedX = Math.random() * 3 - 1.5;
                 this.speedY = Math.random() * 3 - 1.5;
-                this.color = `rgba(0, 102, 204, ${Math.random()})`; // নীল রঙ
+                this.color = `rgba(0, 102, 204, ${Math.random()})`;
             }
             update() {
                 this.x += this.speedX;
@@ -304,7 +309,6 @@
         }
         animate();
 
-        // --- See More History ---
         function toggleExp() {
             var x = document.getElementById("extra-experience");
             var b = document.getElementById("toggleBtn");
