@@ -3,195 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasnimul Hossain | Full Portfolio</title>
+    <title>Tasnimul Hossain | Premium Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #764ba2;
-            --secondary-color: #667eea;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            color: #fff;
             line-height: 1.6;
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            overflow-x: hidden;
         }
-        header {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
+
+        /* Background Animation */
+        .area {
+            background: #4e54c8;  
+            background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+            width: 100%;
+            height:100vh;
+            position: fixed;
+            z-index: -1;
         }
-        .profile-img-main {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
+
         .container {
-            max-width: 900px;
-            margin: -40px auto 50px;
-            padding: 0 20px;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
         }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
         }
-        h2 { border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
-        .timeline-item {
-            border-left: 2px solid var(--secondary-color);
-            padding-left: 20px;
-            margin-bottom: 30px;
-            position: relative;
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
         }
-        .timeline-item::before {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background: var(--primary-color);
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            position: absolute;
-            left: -7px;
-            top: 5px;
+            border: 4px solid #00d2ff;
+            box-shadow: 0 0 20px #00d2ff;
+            object-fit: cover;
+            transition: 0.5s;
         }
-        .date { color: #666; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; display: block; }
-        .job-title { font-weight: bold; font-size: 1.1rem; color: #222; }
-        .org-name { color: var(--primary-color); font-weight: 500; }
-        .description { font-size: 0.95rem; color: #555; margin-top: 8px; text-align: justify; }
-        .tag {
-            background: #e1bee7;
-            color: #7b1fa2;
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            margin-left: 5px;
+
+        .profile-img:hover { transform: scale(1.05) rotate(5deg); }
+
+        h1 { font-size: 3rem; margin-top: 20px; background: -webkit-linear-gradient(#00d2ff, #3a7bd5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .header-tag { font-size: 1.1rem; letter-spacing: 2px; color: #00d2ff; text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+        h2 { font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; color: #00d2ff; }
+
+        /* Timeline Styling */
+        .timeline { position: relative; border-left: 2px solid #00d2ff; padding-left: 30px; margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 5px; width: 16px; height: 16px; background: #00d2ff; border-radius: 50%; box-shadow: 0 0 10px #00d2ff; }
+
+        .date { font-weight: bold; color: #00d2ff; font-size: 0.9rem; }
+        .title { font-size: 1.3rem; font-weight: 600; margin: 5px 0; }
+        .org { font-style: italic; opacity: 0.8; margin-bottom: 10px; display: block; }
+        .desc { font-size: 0.95rem; opacity: 0.7; }
+
+        .highlight-box {
+            background: rgba(0, 210, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #00d2ff;
+            margin-top: 20px;
         }
-        .btn-main {
+
+        .btn-premium {
             display: inline-block;
-            margin-top: 10px;
-            padding: 12px 35px;
-            background: var(--primary-color);
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: 0.3s;
+            text-transform: uppercase;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
         }
-        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4); }
+
+        .btn-premium:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 210, 255, 0.5); }
+
+        /* Animations */
+        [data-aos] { opacity: 0; transition: 1s; }
+        .visible { opacity: 1; }
+
     </style>
 </head>
 <body>
 
-<header>
-    <img src="My.jpeg" alt="Tasnimul Hossain" class="profile-img-main">
-    <h1>Tasnimul Hossain</h1>
-    <p>Senior Rover Mate | Former Deputy Coordinator | CSE Student</p>
-</header>
-
 <div class="container">
-    
-    <div class="card">
-        <h2><i class="fas fa-user"></i> About Me</h2>
-        <p>I am a <strong>CSE Student</strong> at Southeast University (Class of 2023) and an active leader in <strong>World Scouting</strong> since 2011. Currently, I am serving as the <strong>Senior Rover Mate</strong> at Crystal Open Scouts. I also hold the prestigious <strong>Messenger of Peace (MoP) Ring Badge</strong> as part of the very first batch in Bangladesh.</p>
-        
-        <p>Beyond local leadership, I have a significant track record in national-level scouting roles, most notably as the <strong>Former Deputy Coordinator</strong> of the Public Relations & Marketing National Taskforce at Bangladesh Scouts. I specialize in graphics design and IT, previously serving as the <strong>Head of Graphics</strong> and <strong>IT Secretary</strong> at Southeast Cultural Society.</p>
-    </div>
+    <header>
+        <span class="header-tag">Professional Portfolio</span>
+        <img src="My.jpeg" alt="Tasnimul Hossain" class="profile-img">
+        <h1>Tasnimul Hossain</h1>
+        <p style="font-size: 1.2rem; opacity: 0.8;">Senior Rover Mate | Former Deputy Coordinator | CSE Enthusiast</p>
+    </header>
 
-    <div class="card">
-        <h2><i class="fas fa-briefcase"></i> Work & Scouting Experience</h2>
-
-        <div class="timeline-item">
-            <span class="date">March 2025 - Present</span>
-            <div class="job-title">Senior Rover Mate <span class="tag">Leadership</span></div>
-            <div class="org-name">CRYSTAL OPEN SCOUTS, Dhaka</div>
-            <p class="description">Leading Rover Scouting activities focused on personal, organizational, and community development. Helping stakeholders become self-reliant in education, health, and intellect.</p>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">Jan 2024 - July 2024</span>
-            <div class="job-title">Deputy Coordinator <span class="tag">National Level</span></div>
-            <div class="org-name">Public Relations & Marketing National Taskforce, Bangladesh Scouts</div>
-            <p class="description">Managed PR strategies and communication campaigns for national scouting events.</p>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">March 2024 - January 2026</span>
-            <div class="job-title">IT Secretary (Graphics) & Head of Graphics</div>
-            <div class="org-name">Southeast Cultural Society</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">Feb 2024 - March 2024</span>
-            <div class="job-title">Team Member</div>
-            <div class="org-name">অদম্য অভিযাত্রা, Golden Jubilee Rover Moot 2024</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">Sept 2020 - Present</span>
-            <div class="job-title">MOP Ring Badge Holder (1st Batch in BD)</div>
-            <div class="org-name">Messenger of Peace Global Network</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">May 2022 - Feb 2025</span>
-            <div class="job-title">Rover Mate</div>
-            <div class="org-name">CRYSTAL OPEN SCOUTS</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">April 2021 - Dec 2023</span>
-            <div class="job-title">Assistant Coordinator</div>
-            <div class="org-name">PR & Marketing National Taskforce, Bangladesh Scouts</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">Jan 2021 - April 2022</span>
-            <div class="job-title">Assistant Rover Mate</div>
-            <div class="org-name">CRYSTAL OPEN SCOUTS</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">July 2016 - June 2017</span>
-            <div class="job-title">Senior Patrol Leader (S.P.L)</div>
-            <div class="org-name">Govt. Laboratory High School Scout Group</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="date">2011 - 2018</span>
-            <div class="job-title">Cub Scout & Boy Scout Journey</div>
-            <div class="org-name">World Scouting</div>
+    <div class="glass-card">
+        <h2><i class="fas fa-id-badge"></i> Executive Summary</h2>
+        <p style="font-size: 1.1rem;">
+            I am a <strong>Computer Science & Engineering</strong> student at Southeast University with a robust background in <strong>World Scouting</strong> since 2011. 
+            A specialist in Graphics Design and IT management, currently leading as the <strong>Senior Rover Mate</strong> of Crystal Open Scouts.
+        </p>
+        <div class="highlight-box">
+            <strong>Key Milestone:</strong> Part of the <strong>1st Batch of MoP Ring Badge Holders</strong> in Bangladesh, witnessing a historic moment in the national scouting community.
         </div>
     </div>
 
-    <div class="card">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div class="timeline-item">
-            <span class="date">2023 - Present</span>
-            <div class="job-title">B.Sc. in Computer Science & Engineering</div>
-            <div class="org-name">Southeast University</div>
-        </div>
-        <div class="timeline-item">
-            <span class="date">Class of 2020</span>
-            <div class="job-title">Higher Secondary Certificate (HSC)</div>
-            <div class="org-name">B.A.F Shaheen College Kurmitola</div>
-        </div>
-        <div class="timeline-item">
-            <span class="date">Class of 2018</span>
-            <div class="job-title">Secondary School Certificate (SSC)</div>
-            <div class="org-name">Government Laboratory High School</div>
+    <div class="glass-card">
+        <h2><i class="fas fa-briefcase"></i> Experience Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date">March 2025 - Present</span>
+                <div class="title">Senior Rover Mate</div>
+                <span class="org">Crystal Open Scouts, Dhaka</span>
+                <p class="desc">Leading organizational growth and community development projects.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date">Jan 2024 - July 2024</span>
+                <div class="title">Deputy Coordinator</div>
+                <span class="org">PR & Marketing National Taskforce, Bangladesh Scouts</span>
+                <p class="desc">Spearheaded national-level marketing and communication strategies.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date">2024 - 2026</span>
+                <div class="title">IT Secretary & Head of Graphics</div>
+                <span class="org">Southeast Cultural Society</span>
+                <p class="desc">Directed all visual content and IT requirements for the society.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date">2020 - Present</span>
+                <div class="title">MoP Ring Badge Holder</div>
+                <span class="org">World Organization of the Scout Movement (WOSM)</span>
+            </div>
         </div>
     </div>
 
-    <div style="text-align: center;">
-        <a href="info.html" class="btn-main">Connect via Social Media <i class="fas fa-link"></i></a>
+    <div class="glass-card">
+        <h2><i class="fas fa-university"></i> Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date">2023 - Present</span>
+                <div class="title">B.Sc. in CSE</div>
+                <span class="org">Southeast University</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">2020</span>
+                <div class="title">HSC</div>
+                <span class="org">B.A.F Shaheen College Kurmitola</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="info.html" class="btn-premium">Explore Social Network <i class="fas fa-external-link-alt"></i></a>
     </div>
 </div>
 
