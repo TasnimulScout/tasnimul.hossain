@@ -12,6 +12,8 @@
             --accent: #0066cc;
             --bg: #ffffff;
             --text-secondary: #6e6e73;
+            --hover-bg: #f5f5f7; /* হালকা গ্রে ব্যাকগ্রাউন্ড হোভারের জন্য */
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); /* স্মুথ ট্রানজিশন */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,27 +23,97 @@
             background-color: var(--bg);
             color: var(--primary);
             line-height: 1.6;
+            scroll-behavior: smooth; /* স্মুথ স্ক্রলিং */
         }
 
         .container { max-width: 850px; margin: 0 auto; padding: 60px 20px; }
 
         header { text-align: center; margin-bottom: 70px; }
 
-        .profile-img {
-            width: 150px; height: 150px; border-radius: 50%;
-            object-fit: cover; margin-bottom: 20px;
-            border: 1px solid #d2d2d7;
+        /* --- ছবির জন্য ইফেক্টস --- */
+        .profile-img-container {
+            display: inline-block;
+            position: relative;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, #fff 0%, #d2d2d7 100%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
 
-        h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; }
+        .profile-img-container:hover {
+            transform: scale(1.05); /* হালকা জুম */
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.2); /* নীল আভা */
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%); /* বর্ডারে হালকা নীল কালার */
+        }
+
+        .profile-img {
+            width: 150px; height: 150px; border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff; /* সাদা ইনার বর্ডার */
+            transition: var(--transition);
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: rotate(3deg); /* হালকা একটু বাঁকানো */
+        }
+
+        h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; transition: var(--transition); }
+        
+        /* নামের ওপর মাউস নিলে কালার চেঞ্জ */
+        h1:hover { color: var(--accent); }
+
         .role-tag { font-size: 1.1rem; color: var(--text-secondary); }
 
         section { margin-bottom: 50px; }
-        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 25px; border-bottom: 1px solid #d2d2d7; padding-bottom: 10px; color: var(--primary); }
+        
+        /* সেকশন টাইটেলের নিচে নীল দাগের অ্যানিমেশন */
+        h2 { 
+            font-size: 1.8rem; font-weight: 600; 
+            margin-bottom: 25px; 
+            position: relative;
+            padding-bottom: 10px; 
+            color: var(--primary); 
+            display: inline-block;
+        }
 
-        .item { margin-bottom: 30px; }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #d2d2d7;
+            transition: var(--transition);
+        }
+
+        h2:hover::after {
+            width: 100%; /* পুরো দাগ নীল হয়ে যাবে */
+            background-color: var(--accent);
+        }
+
+        /* --- টেক্সট এবং ব্লকের জন্য হোভার ইফেক্টস --- */
+        .item { 
+            margin-bottom: 30px; 
+            padding: 15px; 
+            border-radius: 12px; 
+            transition: var(--transition); 
+        }
+
+        /* প্রতিটা এক্সপেরিয়েন্স ব্লকের ওপর মাউস নিলে হালকা ব্যাকগ্রাউন্ড */
+        .item:hover {
+            background-color: var(--hover-bg);
+            transform: translateY(-3px); /* হালকা ওপরে উঠে আসবে */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
         .date { font-size: 0.85rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        .title { font-size: 1.3rem; font-weight: 600; color: var(--primary); }
+        
+        /* টাইটেলের ওপর মাউস নিলে নীল হবে */
+        .title { font-size: 1.3rem; font-weight: 600; color: var(--primary); transition: var(--transition); }
+        .item:hover .title { color: var(--accent); }
+
         .org { font-size: 1rem; color: var(--text-secondary); margin-bottom: 8px; display: block; font-weight: 500; }
         .desc { font-size: 0.95rem; color: #444; text-align: justify; margin-top: 5px; }
 
@@ -51,20 +123,47 @@
             background: none; border: 1.5px solid var(--accent);
             color: var(--accent); padding: 10px 25px; border-radius: 30px;
             cursor: pointer; font-size: 0.9rem; font-weight: 600;
-            transition: 0.3s; margin-top: 10px;
+            transition: var(--transition); margin-top: 10px;
         }
-        .btn-more:hover { background: var(--accent); color: #fff; }
+        .btn-more:hover { 
+            background: var(--accent); 
+            color: #fff; 
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
 
         .btn-footer {
             display: inline-block; padding: 15px 40px;
             background: var(--primary); color: #fff;
             text-decoration: none; border-radius: 30px;
-            font-weight: 600; margin-top: 50px; transition: 0.3s;
+            font-weight: 600; margin-top: 50px; 
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .btn-footer:hover { opacity: 0.8; transform: translateY(-2px); }
+        .btn-footer:hover { 
+            background: #333; 
+            transform: translateY(-3px) scale(1.03); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
 
         ul.clubs { list-style: none; padding: 0; }
-        ul.clubs li { margin-bottom: 8px; font-size: 1rem; color: #444; display: flex; align-items: center; gap: 10px; }
+        ul.clubs li { 
+            margin-bottom: 12px; 
+            font-size: 1rem; 
+            color: #444; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            padding: 10px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        /* ক্লাবের নামের ওপর মাউস নিলে হালকা নীল ব্যাকগ্রাউন্ড */
+        ul.clubs li:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+            color: var(--accent);
+            transform: translateX(5px); /* হালকা ডানদিকে সরে যাবে */
+        }
         ul.clubs li i { color: var(--accent); font-size: 0.8rem; }
     </style>
 </head>
@@ -72,19 +171,21 @@
 
 <div class="container">
     <header>
-        <img src="My.jpeg" alt="Tasnimul Hossain" class="profile-img">
+        <div class="profile-img-container">
+            <img src="My.jpeg" alt="Tasnimul Hossain" class="profile-img">
+        </div>
         <h1>Tasnimul Hossain</h1>
         <p class="role-tag">Senior Rover Mate | Former Deputy Coordinator | CSE Professional</p>
     </header>
 
-    <section>
+    <section class="fade-in">
         <h2>About Me</h2>
         <p class="desc">
             I am a dedicated <strong>CSE Student</strong> at Southeast University (Class of 2023) and an active leader in <strong>World Scouting</strong> since 2011. Currently, I am serving as the <strong>Senior Rover Mate</strong> at Crystal Open Scouts. I am proud to be part of the <strong>1st Batch of MoP Ring Badge Holders</strong> in Bangladesh. My career is focused on leadership, PR management, and technical excellence in Graphics and IT.
         </p>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Experience</h2>
         
         <div class="item">
@@ -143,7 +244,7 @@
         <button class="btn-more" id="toggleBtn" onclick="toggleExp()">See All Experience</button>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Education</h2>
         <div class="item">
             <span class="date">2023 - Present</span>
@@ -167,7 +268,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Clubs & Affiliations</h2>
         <ul class="clubs">
             <li><i class="fas fa-check"></i> BNCC Cadet (2016-18)</li>
@@ -183,6 +284,7 @@
 </div>
 
 <script>
+    // See More function
     function toggleExp() {
         var extra = document.getElementById("extra-experience");
         var btn = document.getElementById("toggleBtn");
