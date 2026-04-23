@@ -108,12 +108,13 @@
         
         .org-title { font-size: 1.3rem; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; display: block; }
         
-        /* Modal Trigger Styling for Crystal Scouts */
+        /* Crystal Trigger Effect */
         .crystal-trigger {
             cursor: pointer;
             position: relative;
             display: inline-block;
             transition: 0.3s;
+            color: #1d1d1f;
         }
         .crystal-trigger:hover {
             color: var(--primary-accent);
@@ -132,6 +133,7 @@
             opacity: 0;
             visibility: hidden;
             transition: 0.3s;
+            z-index: 10;
         }
         .crystal-trigger:hover::after {
             opacity: 1;
@@ -177,50 +179,63 @@
             z-index: 1000;
             left: 0; top: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
             align-items: center;
             justify-content: center;
         }
         .modal-content {
-            background: var(--glass-white);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
             border-radius: 30px;
             width: 90%;
-            max-width: 600px;
-            max-height: 85vh;
+            max-width: 750px;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             animation: modalPop 0.4s ease;
+            text-align: center;
         }
         @keyframes modalPop {
-            from { transform: scale(0.8); opacity: 0; }
+            from { transform: scale(0.85); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
         .close-modal {
             position: absolute;
-            top: 20px; right: 20px;
-            font-size: 25px; cursor: pointer;
-            color: #444;
+            top: 20px; right: 25px;
+            font-size: 30px; cursor: pointer;
+            color: #444; transition: 0.3s;
         }
-        .modal-body img {
-            width: 100%;
+        .close-modal:hover { color: #ff0000; }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .modal-gallery img {
+            width: 100%; height: 200px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
         }
-        .modal-links {
-            display: flex; gap: 15px; margin-top: 20px;
-        }
+        .modal-gallery img:hover { transform: scale(1.03); }
+
         .modal-link-btn {
-            padding: 10px 20px;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             color: white;
             font-weight: 600;
-            font-size: 0.9rem;
+            background: #1877f2;
             transition: 0.3s;
         }
+        .modal-link-btn:hover { background: #145dbf; transform: translateY(-3px); }
 
         @media (max-width: 1100px) {
             .activity-sidebar { display: none; }
@@ -236,19 +251,29 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-body">
-                <h2 style="color: #0066cc;">Crystal Open Scouts Group</h2>
-                <img src="crystal_cover.jpg" alt="Crystal Scouts Activity"> 
-                <p class="desc">
-                    Crystal Open Scouts Group is one of the most active and prestigious open scout groups in Dhaka. Here, I have progressed from an Assistant Rover Mate (ARM) to my current leadership position as the <strong>Senior Rover Mate (SRM)</strong>. 
-                </p>
-                <p class="desc" style="margin-top: 10px;">
-                    My activities here include organizing camps, leading community service projects, and mentoring new rovers in intellectual and organizational growth.
-                </p>
+                <h2 style="color: #0066cc; margin-bottom: 5px;">My Activity at Crystal Open Scouts</h2>
+                <p style="color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-bottom: 25px;">Senior Rover Mate | leadership & community Service</p>
                 
-                <div class="modal-links">
-                    <a href="https://www.facebook.com/CrystalOpenScouts" target="_blank" class="modal-link-btn" style="background: #1877f2;"><i class="fab fa-facebook"></i> Facebook Page</a>
-                    <a href="#" class="modal-link-btn" style="background: #1d1d1f;"><i class="fas fa-globe"></i> Website</a>
+                <div class="modal-gallery">
+                    <img src="crystal1.jpg" alt="Activity 1">
+                    <img src="crystal2.jpg" alt="Activity 2">
+                    <img src="crystal3.jpg" alt="Activity 3">
+                    <img src="crystal4.jpg" alt="Activity 4">
                 </div>
+
+                <div style="text-align: left; background: rgba(0,102,204,0.05); padding: 25px; border-radius: 20px;">
+                    <h4 style="margin-bottom: 15px; color: #333;"><i class="fas fa-star" style="color: #ffd700;"></i> Key Roles & Activities:</h4>
+                    <ul style="list-style: none; color: #444; line-height: 1.8;">
+                        <li><i class="fas fa-check-circle" style="color: #28a745; margin-right: 10px;"></i> Leading and mentoring over 50+ Rovers as the Senior Rover Mate.</li>
+                        <li><i class="fas fa-check-circle" style="color: #28a745; margin-right: 10px;"></i> Managing weekly Friday meetings and attendance records.</li>
+                        <li><i class="fas fa-check-circle" style="color: #28a745; margin-right: 10px;"></i> Coordinating rescue operations and relief distribution during national crises.</li>
+                        <li><i class="fas fa-check-circle" style="color: #28a745; margin-right: 10px;"></i> Organizing large-scale events like 'Scout Carnival Reloaded 2025'.</li>
+                    </ul>
+                </div>
+                
+                <a href="https://www.facebook.com/CrystalOpenScouts" target="_blank" class="modal-link-btn">
+                    <i class="fab fa-facebook"></i> Visit Official Crystal Facebook
+                </a>
             </div>
         </div>
     </div>
@@ -285,7 +310,6 @@
             
             <div class="item">
                 <span class="org-title crystal-trigger" onclick="openModal()">Crystal Open Scouts, Dhaka</span>
-                
                 <div class="sub-item">
                     <span class="date">March 1, 2025 - Present</span>
                     <div class="role-title">Senior Rover Mate (SRM)</div>
@@ -374,22 +398,19 @@
     </aside>
 
     <script>
-        // Modal Functions
+        // --- Modal Logic ---
         function openModal() {
             document.getElementById("crystalModal").style.display = "flex";
         }
         function closeModal() {
             document.getElementById("crystalModal").style.display = "none";
         }
-        // Close modal if clicked outside
         window.onclick = function(event) {
             let modal = document.getElementById("crystalModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+            if (event.target == modal) { modal.style.display = "none"; }
         }
 
-        // Particle System
+        // --- Particle Cursor Logic ---
         const canvas = document.getElementById('cursor-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -413,9 +434,8 @@
                 if (this.size > 0.2) this.size -= 0.1;
             }
             draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = this.color; ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
             }
         }
         window.addEventListener('mousemove', (e) => {
@@ -431,7 +451,7 @@
         }
         animate();
 
-        // Page Transitions & See More
+        // --- Page Transitions ---
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function(e) {
                 const targetUrl = this.getAttribute('href');
@@ -443,6 +463,7 @@
             });
         });
 
+        // --- Toggle History ---
         function toggleExp() {
             var x = document.getElementById("extra-experience");
             var b = document.getElementById("toggleBtn");
