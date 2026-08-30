@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title>নিজের ফ্রেম — ছবি আপলোড করুন, ফ্রেমে বসান, ডাউনলোড করুন</title>
+<title>ক্রিস্টাল ওপেন স্কাউটস — ফ্রেম ক্যাম্পেইন</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#FBF6EC;
-    --terracotta:#B23A2E;
-    --terracotta-deep:#8C2A21;
+    --primary-blue:#0066cc;
+    --primary-deep:#004c99;
     --gold:#E0A83D;
     --ink:#241A15;
     --leaf:#4B6B3A;
@@ -36,7 +36,7 @@
     align-items:center;
     gap:8px;
     padding:10px 20px;
-    background:var(--terracotta-deep);
+    background:var(--primary-deep);
     color:#fff;
     text-decoration:none;
     border-radius:50px;
@@ -45,11 +45,11 @@
     margin-bottom:20px;
     transition: 0.2s;
   }
-  .btn-back:hover { background: var(--terracotta); }
+  .btn-back:hover { background: var(--primary-blue); }
   .eyebrow{
     letter-spacing:.14em;
     font-size:12px;
-    color:var(--terracotta-deep);
+    color:var(--primary-deep);
     font-weight:600;
     text-transform:uppercase;
     margin-bottom:6px;
@@ -60,7 +60,7 @@
     font-size:clamp(28px, 6vw, 42px);
     text-align:center;
     margin:0 0 6px;
-    color:var(--terracotta-deep);
+    color:var(--primary-deep);
     line-height:1.15;
   }
   .sub{
@@ -78,7 +78,7 @@
     border-radius:18px;
     overflow:hidden;
     background:#fff;
-    box-shadow: 0 2px 0 var(--gold), 0 18px 40px -18px rgba(140,42,33,.55);
+    box-shadow: 0 2px 0 var(--gold), 0 18px 40px -18px rgba(0,102,204,.4);
     touch-action:none;
     cursor:grab;
   }
@@ -99,6 +99,7 @@
     font-size:14px;
     color:#a8988c;
     pointer-events:none;
+    z-index: 2;
   }
 
   .panel{
@@ -118,7 +119,7 @@
     justify-content:center;
     gap:8px;
     padding:14px 16px;
-    background:var(--terracotta);
+    background:var(--primary-blue);
     color:#fff;
     border:none;
     border-radius:12px;
@@ -128,14 +129,8 @@
     cursor:pointer;
     transition:transform .12s ease, background .15s ease;
   }
-  .upload-btn:hover{background:var(--terracotta-deep);}
+  .upload-btn:hover{background:var(--primary-deep);}
   .upload-btn:active{transform:scale(.97);}
-  .upload-btn.secondary{
-    background:#fff;
-    color:var(--terracotta-deep);
-    border:1.5px solid var(--terracotta);
-  }
-  .upload-btn.secondary:hover{background:#fdf0ec;}
 
   label.field-label{
     font-size:13px;
@@ -145,21 +140,9 @@
     display:block;
   }
 
-  input[type="text"]{
-    width:100%;
-    padding:12px 14px;
-    border-radius:10px;
-    border:1.5px solid var(--paper-line);
-    font-family:'Hind Siliguri',sans-serif;
-    font-size:15px;
-    background:#fff;
-    outline:none;
-  }
-  input[type="text"]:focus{border-color:var(--gold);}
-
   input[type="range"]{
     width:100%;
-    accent-color:var(--terracotta);
+    accent-color:var(--primary-blue);
   }
 
   .zoom-row{display:flex; align-items:center; gap:10px;}
@@ -187,21 +170,7 @@
   }
   .download-btn:not(:disabled):active{transform:scale(.98);}
 
-  details.admin{
-    margin-top:6px;
-    font-size:13px;
-    color:#8a7a6d;
-  }
-  details.admin summary{cursor:pointer; user-select:none;}
-  details.admin .inner{
-    margin-top:10px;
-    padding:12px;
-    background:rgba(255,255,255,.6);
-    border:1px dashed var(--paper-line);
-    border-radius:10px;
-  }
-
-  #photoInput, #frameInput{display:none;}
+  #photoInput{display:none;}
 
   footer{
     margin-top:34px;
@@ -215,13 +184,13 @@
 
   <a href="index.html" class="btn-back">← Back to Dashboard</a>
 
-  <div class="eyebrow">ফ্রেম ক্যাম্পেইন</div>
+  <div class="eyebrow">Crystal Open Scouts</div>
   <h1>নিজের ছবি ফ্রেমে বসান</h1>
-  <p class="sub">একটা ছবি আপলোড করুন, টেনে-টুনে ঠিক জায়গায় বসান, তারপর এক ক্লিকে ফ্রেম-সহ ছবি ডাউনলোড করে ফেলুন।</p>
+  <p class="sub">একটি ছবি আপলোড করুন, হাত দিয়ে টেনে ফ্রেমে ঠিকমতো বসান এবং ডাউনলোড করে নিন।</p>
 
   <div class="stage" id="stage">
     <canvas id="canvas" width="900" height="900"></canvas>
-    <div class="empty-hint" id="emptyHint">এখানে আপনার ছবি বসবে —<br>নিচ থেকে একটা ছবি আপলোড করুন</div>
+    <div class="empty-hint" id="emptyHint">এখানে আপনার ছবি বসবে —<br>নিচ থেকে একটি ছবি আপলোড করুন</div>
   </div>
 
   <div class="panel">
@@ -232,7 +201,7 @@
     </div>
 
     <div id="zoomWrap" style="display:none;">
-      <label class="field-label">ছবি ছোট-বড় করুন</label>
+      <label class="field-label">ছবি ছোট-বড় করুন (Zoom)</label>
       <div class="zoom-row">
         <span>−</span>
         <input type="range" id="zoomRange" min="100" max="300" value="100">
@@ -240,28 +209,12 @@
       </div>
     </div>
 
-    <div>
-      <label class="field-label" for="captionInput">ফ্রেমের নিচে লেখা (ঐচ্ছিক)</label>
-      <input type="text" id="captionInput" placeholder="যেমনঃ আমি আছি এই আয়োজনে" maxlength="40">
-    </div>
-
     <button class="download-btn" id="downloadBtn" disabled>ছবি ডাউনলোড করুন</button>
-
-    <details class="admin">
-      <summary>ফ্রেম বদলাতে চান? (আয়োজকদের জন্য)</summary>
-      <div class="inner">
-        নিজের ডিজাইন করা ফ্রেম (মাঝখানে স্বচ্ছ/ফাঁকা জায়গাসহ PNG ছবি) আপলোড করলে ডিফল্ট ফ্রেমের বদলে সেটা ব্যবহার হবে।
-        <div class="row" style="margin-top:10px;">
-          <button class="upload-btn secondary" id="uploadFrameBtn">নিজের ফ্রেম আপলোড করুন</button>
-        </div>
-      </div>
-    </details>
   </div>
 
   <input type="file" id="photoInput" accept="image/*">
-  <input type="file" id="frameInput" accept="image/png,image/webp">
 
-  <footer>টানুন সরাতে, স্লাইডার দিয়ে জুম করুন — সবটাই আপনার ফোনে/ব্রাউজারে হয়, কোথাও আপলোড হয় না।</footer>
+  <footer>টেনে সরান ও স্লাইডার দিয়ে জুম করুন — ছবি কোথাও আপলোড হয় না, আপনার ফোনেই ফ্রেম তৈরি হয়।</footer>
 
 <script>
 (function(){
@@ -271,70 +224,39 @@
   const stage = document.getElementById('stage');
   const emptyHint = document.getElementById('emptyHint');
   const photoInput = document.getElementById('photoInput');
-  const frameInput = document.getElementById('frameInput');
   const uploadBtn = document.getElementById('uploadBtn');
-  const uploadFrameBtn = document.getElementById('uploadFrameBtn');
   const downloadBtn = document.getElementById('downloadBtn');
   const zoomRange = document.getElementById('zoomRange');
   const zoomWrap = document.getElementById('zoomWrap');
-  const captionInput = document.getElementById('captionInput');
 
   let userImage = null;
-  let customFrameImage = null;
+  const frameImage = new Image();
+  let isFrameLoaded = false;
 
-  // ছবির অবস্থান ও জুম ট্র্যাকিং
+  // crystal.png ফাইলটি ডিফল্ট ফ্রেম হিসেবে লোড হচ্ছে
+  frameImage.src = 'crystal.png';
+  frameImage.onload = () => {
+    isFrameLoaded = true;
+    render();
+  };
+
+  // ছবির ড্র্যাগ ও স্কেলিং স্টেট
   let imgX = SIZE / 2;
   let imgY = SIZE / 2;
-  let imgScale = 1;
   let baseScale = 1;
 
   let isDragging = false;
   let startX = 0;
   let startY = 0;
 
-  // ডিফল্ট স্টাইলিশ ফ্রেম ড্র করার ফাংশন
-  function drawDefaultFrame() {
-    ctx.save();
-    
-    // বাইরের ফ্রেম কালার
-    ctx.strokeStyle = '#B23A2E';
-    ctx.lineWidth = 40;
-    ctx.strokeRect(20, 20, SIZE - 40, SIZE - 40);
-
-    // গোল্ডেন বর্ডার লাইন
-    ctx.strokeStyle = '#E0A83D';
-    ctx.lineWidth = 8;
-    ctx.strokeRect(45, 45, SIZE - 90, SIZE - 90);
-
-    // নিচের ব্যানার প্লেট
-    ctx.fillStyle = '#8C2A21';
-    ctx.fillRect(45, SIZE - 160, SIZE - 90, 115);
-
-    // ডিফল্ট ফ্রেম টেক্সট
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 36px "Hind Siliguri", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    
-    const userCaption = captionInput.value.trim();
-    if (userCaption) {
-      ctx.fillText(userCaption, SIZE / 2, SIZE - 105);
-    } else {
-      ctx.fillText('30 Years Of Glory - Crystal Open Scouts', SIZE / 2, SIZE - 105);
-    }
-
-    ctx.restore();
-  }
-
-  // ক্যানভাস রেন্ডার ফাংশন
   function render() {
     ctx.clearRect(0, 0, SIZE, SIZE);
 
-    // ১. ব্যাকগ্রাউন্ড
+    // ১. হোয়াইট ব্যাকগ্রাউন্ড
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, SIZE, SIZE);
 
-    // ২. ইউজার ফটো রেন্ডার
+    // ২. ইউজারের ছবি (ফ্রেমের নিচে ড্র হবে)
     if (userImage) {
       ctx.save();
       const currentScale = baseScale * (zoomRange.value / 100);
@@ -344,19 +266,16 @@
       ctx.restore();
     }
 
-    // ৩. ফ্রেম রেন্ডার (কাস্টম ফ্রেম থাকলে সেটা, নাহলে ডিফল্ট ফ্রেম)
-    if (customFrameImage) {
-      ctx.drawImage(customFrameImage, 0, 0, SIZE, SIZE);
-    } else {
-      drawDefaultFrame();
+    // ৩. crystal.png ফ্রেম (ছবির উপরে ড্র হবে)
+    if (isFrameLoaded) {
+      ctx.drawImage(frameImage, 0, 0, SIZE, SIZE);
     }
   }
 
-  // বাটন ক্লিক ইভেন্টস
+  // বাটন ক্লিক
   uploadBtn.addEventListener('click', () => photoInput.click());
-  uploadFrameBtn.addEventListener('click', () => frameInput.click());
 
-  // ছবি আপলোড হ্যান্ডলার
+  // ছবি লোড হ্যান্ডলার
   photoInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -366,7 +285,6 @@
       const img = new Image();
       img.onload = () => {
         userImage = img;
-        // ছবিকে ক্যানভাস সাইজের সাথে ফিট করানো
         baseScale = Math.max(SIZE / img.width, SIZE / img.height);
         imgX = SIZE / 2;
         imgY = SIZE / 2;
@@ -381,28 +299,10 @@
     reader.readAsDataURL(file);
   });
 
-  // কাস্টম ফ্রেম আপলোড হ্যান্ডলার
-  frameInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.onload = () => {
-        customFrameImage = img;
-        render();
-      };
-      img.src = event.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // স্লাইডার ও ক্যাপশন লাইভ আপডেট
+  // জুম স্লাইডার
   zoomRange.addEventListener('input', render);
-  captionInput.addEventListener('input', render);
 
-  // ছবি ড্র্যাগ ও মুভমেন্ট লজিক (মাউস এবং মোবাইল টাচ উভয়ের জন্য)
+  // ড্র্যাগ ফাংশনালিটি
   function startDrag(e) {
     if (!userImage) return;
     isDragging = true;
@@ -454,12 +354,11 @@
   downloadBtn.addEventListener('click', () => {
     if (!userImage) return;
     const link = document.createElement('a');
-    link.download = 'framed-photo.png';
+    link.download = 'crystal-scouts-frame.png';
     link.href = canvas.toDataURL('image/png', 1.0);
     link.click();
   });
 
-  // ইনিশিয়াল রেন্ডার
   render();
 })();
 </script>
