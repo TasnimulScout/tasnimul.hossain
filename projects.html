@@ -6,6 +6,7 @@
     <title>Technical Projects | Tasnimul Hossain</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="runner.css">
    
     
     <style>
@@ -69,6 +70,7 @@ body {
             font-weight: 800; 
             background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
         }
@@ -168,10 +170,84 @@ body {
             text-align: center;
         }
 
+        .behance-section {
+            margin-top: 70px;
+        }
+
+        .behance-heading {
+            margin-bottom: 12px;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .behance-heading i {
+            margin-right: 10px;
+            color: #1769ff;
+        }
+
+        .behance-intro {
+            margin-bottom: 28px;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .behance-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .behance-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+            transition: var(--transition);
+        }
+
+        .behance-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.45);
+        }
+
+        .behance-embed {
+            display: block;
+            width: 100%;
+            height: 280px;
+            border: 0;
+            background: #fff;
+        }
+
+        .behance-card-link {
+            display: flex;
+            min-height: 70px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 20px;
+            color: #f8fafc;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+
+        .behance-card-link i {
+            flex: 0 0 auto;
+            color: #38bdf8;
+        }
+
         /* মোবাইল স্ক্রিন */
         @media (max-width: 768px) {
             .header h1 { font-size: 2.2rem; }
             .project-card { padding: 25px; }
+            .behance-section { margin-top: 52px; }
+            .behance-heading { font-size: 1.65rem; }
+            .behance-grid { grid-template-columns: 1fr; }
+            .behance-embed { height: 300px; }
         }
     </style>
 </head>
@@ -181,6 +257,43 @@ body {
 
     <div class="container">
         <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+
+        <section class="behance-section" aria-labelledby="behance-heading">
+            <h2 class="behance-heading" id="behance-heading"><i class="fab fa-behance"></i> Graphic Design Projects</h2>
+            <p class="behance-intro">Selected social media designs and event campaigns, showcased directly from Behance.</p>
+            <div class="behance-grid">
+                <article class="behance-card">
+                    <iframe class="behance-embed" src="https://www.behance.net/embed/project/257413525?ilo0=1" title="Bangladesh Scouts | Social Media Designs 2023-24" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a class="behance-card-link" href="https://www.behance.net/gallery/257413525/Bangladesh-Scouts-Social-Media-Designs-2023-24" target="_blank" rel="noopener noreferrer">
+                        Bangladesh Scouts | Social Media Designs 2023-24 <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </article>
+                <article class="behance-card">
+                    <iframe class="behance-embed" src="https://www.behance.net/embed/project/257412219?ilo0=1" title="2nd Indo-Bangladesh Scout Friendship Camp 2024" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a class="behance-card-link" href="https://www.behance.net/gallery/257412219/2nd-Indo-Bangladesh-Scout-Friendship-Camp-2024" target="_blank" rel="noopener noreferrer">
+                        2nd Indo-Bangladesh Scout Friendship Camp 2024 <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </article>
+                <article class="behance-card">
+                    <iframe class="behance-embed" src="https://www.behance.net/embed/project/257411841?ilo0=1" title="32nd APR Scout Jamboree 2023 | Social Media Campaign" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a class="behance-card-link" href="https://www.behance.net/gallery/257411841/32nd-APR-Scout-Jamboree-2023-Social-Media-Campaign" target="_blank" rel="noopener noreferrer">
+                        32nd APR Scout Jamboree 2023 | Social Media Campaign <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </article>
+                <article class="behance-card">
+                    <iframe class="behance-embed" src="https://www.behance.net/embed/project/172074837?ilo0=1" title="Camp for SDGs 2023 | Event Banner" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a class="behance-card-link" href="https://www.behance.net/gallery/172074837/Camp-for-SDGs-2023-Event-Banner" target="_blank" rel="noopener noreferrer">
+                        Camp for SDGs 2023 | Event Banner <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </article>
+                <article class="behance-card">
+                    <iframe class="behance-embed" src="https://www.behance.net/embed/project/172073747?ilo0=1" title="Scouts for SDGs | Social Media Post" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a class="behance-card-link" href="https://www.behance.net/gallery/172073747/Scouts-for-SDGs-Social-Media-Post" target="_blank" rel="noopener noreferrer">
+                        Scouts for SDGs | Social Media Post <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </article>
+            </div>
+        </section>
         
         <div class="header">
             <h1>Technical Projects</h1>
@@ -210,52 +323,6 @@ body {
             </ul>
         </div>
 
-        <div class="project-card">
-            <div class="project-title"><i class="fas fa-crop-alt"></i> Photo Frame Generator</div>
-
-            <div class="tech-stack">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">HTML5 Canvas</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">UI Design</span>
-            </div>
-
-            <p class="project-desc">
-                A web tool built for the Crystal Open Scouts frame campaign. Users upload a photo, position it inside the campaign frame and download the finished image, ready to use as a profile picture.
-            </p>
-
-            <span class="feature-title">Technical Highlights:</span>
-            <ul class="project-features">
-                <li><i class="fas fa-check-circle"></i> <strong>Image Editing:</strong> Drag to reposition and a slider to zoom, drawn live on an HTML5 canvas.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Privacy:</strong> The photo is processed entirely in the browser and never uploaded to a server.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Export:</strong> One-click download of the framed image.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Design:</strong> Frame artwork and interface designed by me, with Bangla typography.</li>
-            </ul>
-            <a href="frame.html" class="btn-back" style="margin-top: 20px; margin-bottom: 0;"><i class="fas fa-arrow-right"></i> Try it live</a>
-        </div>
-
-        <div class="project-card">
-            <div class="project-title"><i class="fas fa-laptop-code"></i> Personal Portfolio Website</div>
-
-            <div class="tech-stack">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">GitHub Pages</span>
-            </div>
-
-            <p class="project-desc">
-                This website. A hand-coded personal portfolio with a dashboard, project showcase, contact page and the frame generator, hosted on GitHub Pages.
-            </p>
-
-            <span class="feature-title">Technical Highlights:</span>
-            <ul class="project-features">
-                <li><i class="fas fa-check-circle"></i> <strong>Animation:</strong> Smooth page-to-page transitions and an interactive canvas cursor effect.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Responsive:</strong> Layout adapts to phones, tablets and desktops.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>No frameworks:</strong> Built with plain HTML, CSS and JavaScript.</li>
-            </ul>
-        </div>
-
         <div class="project-card upcoming">
             <div class="project-title" style="justify-content: center;"><i class="fas fa-terminal"></i> In Progress...</div>
             <p class="project-desc">
@@ -267,6 +334,7 @@ body {
                 <span class="tech-tag">C++</span>
             </div>
         </div>
+
     </div>
 
     <script>
@@ -326,7 +394,7 @@ body {
     </script>
     <script>
     // ১. কার্সার ইফেক্ট কোড
-    const canvas = document.getElementById('cursor-canvas');
+    const canvas2 = document.getElementById('cursor-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -386,5 +454,6 @@ body {
         });
     });
 </script>
+<script src="runner.js" defer></script>
 </body>
 </html>
