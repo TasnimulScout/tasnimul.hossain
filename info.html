@@ -6,6 +6,7 @@
     <title>Connect | Tasnimul Hossain</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="runner.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 /* পেজ লোড হওয়ার এনিমেশন */
@@ -145,8 +146,9 @@ body {
         .facebook:hover { box-shadow: 0 0 20px #1877f2; }
         .instagram:hover { box-shadow: 0 0 20px #e1306c; }
         .linkedin:hover { box-shadow: 0 0 20px #0077b5; }
-        .snapchat:hover { box-shadow: 0 0 20px #fffc00; color: #fffc00; }
+        .github:hover { box-shadow: 0 0 20px #333; }
         .behance:hover { box-shadow: 0 0 20px #1769ff; }
+        .snapchat:hover { box-shadow: 0 0 20px #fffc00; color: #fffc00; }
         
         .contact-actions {
             margin-top: 30px;
@@ -207,7 +209,10 @@ body {
             <a href="https://www.linkedin.com/in/tasnimul-hossain" target="_blank" class="btn-link linkedin">
                 <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
-            <a href="https://www.behance.net/tasnimul-hossain" target="_blank" class="btn-link behance">
+            <a href="https://github.com/TasnimulScout" target="_blank" rel="noopener noreferrer" class="btn-link github">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.behance.net/tasnimul-hossain" target="_blank" rel="noopener noreferrer" class="btn-link behance">
                 <i class="fab fa-behance"></i> Behance
             </a>
             <a href="https://www.snapchat.com/add/tasnimul.scouts" target="_blank" class="btn-link snapchat">
@@ -290,7 +295,7 @@ body {
     </script>
 <script>
     // ১. কার্সার ইফেক্ট কোড
-    const canvas = document.getElementById('cursor-canvas');
+    const canvas2 = document.getElementById('cursor-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -350,5 +355,6 @@ body {
         });
     });
 </script>
+<script src="runner.js" defer></script>
 </body>
 </html>
