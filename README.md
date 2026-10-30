@@ -2,7 +2,7 @@
 
 My personal portfolio, hand-coded in plain HTML, CSS and JavaScript and hosted on GitHub Pages.
 
-🔗 **Live site:** https://tasnimulscout.github.io/tasnimul.hossain/
+🔗 **Live site:** https://tasnimulscout.github.io/
 
 ## Pages
 
@@ -22,7 +22,7 @@ A web tool I built for the **Crystal Open Scouts** frame campaign. Users upload 
 - One-click download of the finished image
 - Frame artwork and interface designed by me, with Bangla typography
 
-👉 [Try it live](https://tasnimulscout.github.io/tasnimul.hossain/frame.html)
+👉 [Try it live](https://tasnimulscout.github.io/frame.html)
 
 ## Built with
 
